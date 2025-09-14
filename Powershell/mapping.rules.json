@@ -1,0 +1,38 @@
+{
+  "Three Columns": {
+    "center": {
+      "allowedComponents": ["HTML Editor", "Image Wrapper", "Latest News"],
+      "defaultPlaceholder": "headless-main"
+    },
+    "right": {
+      "allowedComponents": ["List Links", "Cluster Block"],
+      "defaultPlaceholder": "headless-main"
+    },
+    "left": {
+      "allowedComponents": ["Promo Box"],
+      "defaultPlaceholder": "headless-main"
+    }
+  },
+  "Two Columns": {
+    "left": {
+      "allowedComponents": ["HTML Editor", "Image Wrapper", "Text With Image"],
+      "defaultPlaceholder": "headless-main"
+    },
+    "right": {
+      "allowedComponents": ["List Links", "Cluster Block", "Profile List"],
+      "defaultPlaceholder": "headless-main"
+    }
+  }
+  ,
+  "Three Column (alt)": {
+    "center": { "allowedComponents": ["Teaser List","HTML Editor"], "defaultPlaceholder": "headless-main" },
+    "left": { "allowedComponents": ["Mini Banner"], "defaultPlaceholder": "headless-main" },
+    "right": { "allowedComponents": ["List Links"], "defaultPlaceholder": "headless-main" }
+  }
+  ,
+  "FallbackToHtmlEditor": {
+    "description": "Any unmapped component will be rendered using HTML Editor and the full JSON stored in the HTMLBlock field",
+    "defaultPlaceholder": "headless-main",
+    "useHtmlEditorFor": []
+  }
+}

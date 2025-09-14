@@ -1,0 +1,46 @@
+{
+  "components": {
+    "HTML Editor": {
+      "renderingId": "{04646A89-996F-4EE7-878A-FFDBF1F0EF0D}",
+      "datasourceTemplateId": "{3859AE1B-B1E1-4A53-A38D-B865512DE58A}",
+      "fieldMappings": {
+        "html": "HTMLBlock",
+        "text": "HTMLBlock"
+      }
+    },
+    "Jumbotron": {
+      "renderingId": "{66E43373-6D9F-4206-A8FA-5D5B15364403}",
+      "datasourceTemplateId": "{2D418647-C7ED-4366-8668-087B804D87A4}",
+      "fieldMappings": {
+        "title": "PrimaryOverlayText",
+        "image": "Image"
+      }
+    },
+    "Mini Banner": {
+      "renderingId": "{66E43373-6D9F-4206-A8FA-5D5B15364403}",
+      "datasourceTemplateId": "{2D418647-C7ED-4366-8668-087B804D87A4}",
+      "fieldMappings": {
+        "title": "PrimaryOverlayText",
+        "image": "Image"
+      }
+    },
+    "Quote": {
+      "renderingId": "{4DD9DAD8-290D-4326-8176-3A9C5F09893B}",
+      "datasourceTemplateId": "{B62B51CD-8090-4B06-B45A-B945AD24C640}",
+      "fieldMappings": {
+        "text": "QuoteText",
+        "author": "AuthorName",
+        "designation": "AuthorDesignation"
+      }
+    },
+    "Text With Image": {
+      "renderingId": "{4C206E7C-C3D1-4637-BBEC-D6DC3274EB6D}",
+      "datasourceTemplateId": "{D60BB58E-AF3D-49FF-8CEB-4FFF1D3C97FE}",
+      "fieldMappings": {
+        "title": "IntroContent",
+        "html": "BodyContent",
+        "image": "Image"
+      }
+    }
+  }
+}

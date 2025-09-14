@@ -1,0 +1,10 @@
+{
+  "language": "en",
+  "rootItemPath": "/sitecore/content/Bayer/Corporate/bayer-uk/Home/Develop/New Migration",
+  "datasourceFolderName": "Data",
+  "pageTemplateId": "{60112A08-0BEA-44D6-A38C-69CDC3DC7FCB}",
+  "datasourceFolderTemplateId": "{78296B73-3974-44E4-ACED-88D88B9951C8}",
+  "deviceId": "{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}",
+  "dryRunDefault": true,
+  "logLevel": "Info"
+}
