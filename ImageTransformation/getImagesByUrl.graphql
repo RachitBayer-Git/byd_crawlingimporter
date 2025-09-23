@@ -3,7 +3,9 @@ query GetImagesByURL($url: String!) {
     importUrls_endswith:$url
   }){
     results {
+      id
       fileName
+      title
       asset_Copyright
       fileProperties
       importUrls
