@@ -4,7 +4,8 @@ import { fileURLToPath } from 'url';
 import { queryImagesByUrl } from './queryImages.js';
 
 // Track images that were not found in Content Hub during this run
-const missingImages = new Map(); // filename -> Set of source paths where referenced
+// Structure: Map<filename, Map<sourceUrl, Set<pageUrls>>>
+const missingImages = new Map();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -181,6 +182,9 @@ async function processDataJsonFile(filePath, outputDir, sourceDir) {
     const uniqueFilenames = new Set();
     const filenameToUrlMap = new Map(); // To track original URLs for each filename
     
+    // Determine the page URL (prefer og:url in metadata.meta, fallback to metadata.url)
+    const pageUrl = (data && data.metadata && data.metadata.meta && data.metadata.meta['og:url']) || (data && data.metadata && data.metadata.url) || filePath;
+
     for (const imageRef of imageUrls) {
       const filename = extractFilename(imageRef.url);
       if (filename) {
@@ -225,9 +229,12 @@ async function processDataJsonFile(filePath, outputDir, sourceDir) {
         console.log(`    ✗ Not found in Content Hub: ${filename}`);
         // Keep original URL if not found
         urlMapping.set(filename, originalUrl);
-        // Record missing image and where it was referenced
-        if (!missingImages.has(filename)) missingImages.set(filename, new Set());
-        missingImages.get(filename).add(originalUrl || '<unknown>');
+        // Record missing image and where it was referenced, plus page URL
+        if (!missingImages.has(filename)) missingImages.set(filename, new Map());
+        const srcMap = missingImages.get(filename);
+        const srcKey = originalUrl || '<unknown>';
+        if (!srcMap.has(srcKey)) srcMap.set(srcKey, new Set());
+        srcMap.get(srcKey).add(pageUrl || filePath);
       }
     }
     
@@ -331,10 +338,13 @@ async function transformAllDataFiles(sourceFolder = 'en') {
   // Print missing images summary
   if (missingImages.size > 0) {
     console.log('\n⚠️ Images NOT FOUND in Content Hub:');
-    for (const [filename, sources] of missingImages.entries()) {
+    for (const [filename, srcMap] of missingImages.entries()) {
       console.log(`  - ${filename}`);
-      for (const src of Array.from(sources)) {
+      for (const [src, pageSet] of srcMap.entries()) {
         console.log(`      full url: ${src}`);
+        for (const page of Array.from(pageSet)) {
+          console.log(`          referenced on page: ${page}`);
+        }
       }
     }
   } else {
