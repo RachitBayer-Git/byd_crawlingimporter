@@ -79,11 +79,35 @@ function replaceImageUrls(obj, urlMapping) {
     }
     return obj;
   } else if (Array.isArray(obj)) {
-    return obj.map(item => replaceImageUrls(item, urlMapping));
+    // Pass through the metadata mapping (arguments[2]) to preserve metadata in nested arrays
+    return obj.map(item => replaceImageUrls(item, urlMapping, arguments[2]));
   } else if (obj && typeof obj === 'object') {
     const newObj = {};
     Object.keys(obj).forEach(key => {
-      newObj[key] = replaceImageUrls(obj[key], urlMapping);
+      const val = obj[key];
+      // If this property is a plain string image, add contentHubImage next to it
+      if (typeof val === 'string' && containsImageUrl(val)) {
+        const filename = extractFilename(val);
+        newObj[key] = val;
+        // metadataMapping is expected to be provided as third arg; if present, use it
+        // this function will be called with (obj, urlMapping, metadataMapping)
+        // but to keep backward compatibility, check arguments
+        const metadataMapping = arguments[2];
+        if (filename && metadataMapping && metadataMapping.has(filename)) {
+          const meta = metadataMapping.get(filename);
+          // Special-case meta keys: for 'og:image' and 'twitter:image' create
+          // 'og:contentHubImage' and 'twitter:contentHubImage' respectively.
+          if (key === 'og:image') {
+            newObj['og:contentHubImage'] = meta;
+          } else if (key === 'twitter:image') {
+            newObj['twitter:contentHubImage'] = meta;
+          } else {
+            newObj['contentHubImage'] = meta;
+          }
+        }
+      } else {
+        newObj[key] = replaceImageUrls(val, urlMapping, arguments[2]);
+      }
     });
     return newObj;
   }
@@ -131,6 +155,7 @@ async function processDataJsonFile(filePath, outputDir, sourceDir) {
     
     // Extract unique filenames and get their relative URLs
     const urlMapping = new Map();
+  const metadataMapping = new Map();
     const uniqueFilenames = new Set();
     const filenameToUrlMap = new Map(); // To track original URLs for each filename
     
@@ -151,12 +176,30 @@ async function processDataJsonFile(filePath, outputDir, sourceDir) {
       
         const result = await queryImagesByUrl(filename, false);
         
-    if (result.success && result.relativeUrl) {
+        if (result.success && result.relativeUrl) {
       // Generate a random 8-character hex string for the hash
       const hash = Math.random().toString(16).slice(2, 10).padEnd(8, '0');
-      urlMapping.set(filename, `${process.env.CONTENT_HUB_BASE_URL}${process.env.CONTENT_HUB_CONTENT_URL}${result.relativeUrl}?v=${hash}`);
+      const publicSrc = `${process.env.CONTENT_HUB_BASE_URL}${process.env.CONTENT_HUB_CONTENT_URL}${result.relativeUrl}?v=${hash}`;
+      urlMapping.set(filename, publicSrc);
+
+      // Build metadata object
+      const assetResult = result.rawResponse?.data?.allM_Asset?.results?.[0] || {};
+      const publicLink = assetResult.assetToPublicLink?.results?.[0] || {};
+      const fileProps = assetResult.fileProperties?.properties || {};
+      const metadata = {
+        src: publicSrc,
+        // Use the asset's top-level ID as the canonical DAM id. Keep the public link id available as publicLinkId.
+        damId: assetResult.id || publicLink.id || null,
+        publicLinkId: publicLink.id || null,
+        width: fileProps.width || null,
+        height: fileProps.height || null,
+        alt: assetResult.fileName || null,
+        damContentType: 'Image'
+      };
+      metadataMapping.set(filename, metadata);
+
       console.log(`    ✓ Found with URL: ${filename} -> ${result.relativeUrl}`);
-        }else{
+        } else {
         console.log(`    ✗ Not found in Content Hub with any variation`);
         // Keep original URL if not found
         urlMapping.set(filename, originalUrl);
@@ -165,7 +208,7 @@ async function processDataJsonFile(filePath, outputDir, sourceDir) {
     
     // Transform the data
     console.log(`\nTransforming data...`);
-    const transformedData = replaceImageUrls(data, urlMapping);
+  const transformedData = replaceImageUrls(data, urlMapping, metadataMapping);
     
     // Create output directory structure
     // Calculate relative path from source directory to this file
