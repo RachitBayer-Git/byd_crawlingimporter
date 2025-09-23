@@ -3,6 +3,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { queryImagesByUrl } from './queryImages.js';
 
+// Track images that were not found in Content Hub during this run
+const missingImages = new Map(); // filename -> Set of source paths where referenced
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -45,11 +48,30 @@ function containsImageUrl(str) {
 function findImageUrls(obj, currentPath = '') {
   const imageUrls = [];
   
-  if (typeof obj === 'string' && containsImageUrl(obj)) {
-    imageUrls.push({
-      url: obj,
-      path: currentPath
-    });
+  if (typeof obj === 'string') {
+    // If the string contains HTML tags, try to extract src/href attributes
+    if (/<[^>]+>/.test(obj)) {
+      // Find src="..." or src='...' or href="..." or href='...'
+      const attrRegex = /(?:src|href)\s*=\s*(?:"([^"]+)"|'([^']+)'|([^\s>]+))/ig;
+      let match;
+      while ((match = attrRegex.exec(obj)) !== null) {
+        const candidate = match[1] || match[2] || match[3];
+        if (candidate && containsImageUrl(candidate)) {
+          imageUrls.push({ url: candidate, path: currentPath });
+        }
+      }
+      // Also capture url(...) patterns in inline CSS
+      const cssUrlRegex = /url\((?:"([^\"]+)"|'([^']+)'|([^\)]+))\)/ig;
+      while ((match = cssUrlRegex.exec(obj)) !== null) {
+        const candidate = match[1] || match[2] || match[3];
+        if (candidate && containsImageUrl(candidate)) {
+          imageUrls.push({ url: candidate.replace(/^["']|["']$/g, ''), path: currentPath });
+        }
+      }
+    } else if (containsImageUrl(obj)) {
+      // Plain string that looks like an image URL — keep as-is
+      imageUrls.push({ url: obj, path: currentPath });
+    }
   } else if (Array.isArray(obj)) {
     obj.forEach((item, index) => {
       imageUrls.push(...findImageUrls(item, `${currentPath}[${index}]`));
@@ -200,9 +222,12 @@ async function processDataJsonFile(filePath, outputDir, sourceDir) {
 
       console.log(`    ✓ Found with URL: ${filename} -> ${result.relativeUrl}`);
         } else {
-        console.log(`    ✗ Not found in Content Hub with any variation`);
+        console.log(`    ✗ Not found in Content Hub: ${filename}`);
         // Keep original URL if not found
         urlMapping.set(filename, originalUrl);
+        // Record missing image and where it was referenced
+        if (!missingImages.has(filename)) missingImages.set(filename, new Set());
+        missingImages.get(filename).add(originalUrl || '<unknown>');
       }
     }
     
@@ -302,6 +327,19 @@ async function transformAllDataFiles(sourceFolder = 'en') {
   console.log(`Total images processed: ${totalProcessed}`);
   console.log(`Images found in Content Hub: ${totalFound}`);
   console.log(`Output directory: ${outputDir}`);
+
+  // Print missing images summary
+  if (missingImages.size > 0) {
+    console.log('\n⚠️ Images NOT FOUND in Content Hub:');
+    for (const [filename, sources] of missingImages.entries()) {
+      console.log(`  - ${filename}`);
+      for (const src of Array.from(sources)) {
+        console.log(`      full url: ${src}`);
+      }
+    }
+  } else {
+    console.log('\n✅ All referenced images were found in Content Hub.');
+  }
 
   const errors = results.filter(r => r.error);
   if (errors.length > 0) {
