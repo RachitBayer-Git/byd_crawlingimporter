@@ -1,0 +1,23 @@
+query GetImagesByURL($url: String!) {
+  allM_Asset (where: {
+    importUrls_endswith:$url
+  }){
+    results {
+      id
+      fileName
+      title
+      asset_Copyright
+      fileProperties
+      importUrls
+      assetToPublicLink {
+        total
+        results {
+          id
+          resource
+          conversionConfiguration
+          relativeUrl
+        }
+      }
+    }
+  }
+}
