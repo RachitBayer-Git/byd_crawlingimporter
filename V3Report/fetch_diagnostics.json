@@ -1,0 +1,279 @@
+[
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/en/",
+    "final_url": "https://www.patientassistance.bayer.us/en/",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/en/"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/en/resources",
+    "final_url": "https://www.patientassistance.bayer.us/en/resources",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/en/resources"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/en/find-help/find-help-tool",
+    "final_url": "https://www.patientassistance.bayer.us/en/find-help/find-help-tool",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/en/find-help/find-help-tool"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/en/find-help",
+    "final_url": "https://www.patientassistance.bayer.us/en/find-help",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/en/find-help"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/en/faqs",
+    "final_url": "https://www.patientassistance.bayer.us/en/faqs",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/en/faqs"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/en/contact",
+    "final_url": "https://www.patientassistance.bayer.us/en/contact",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/en/contact"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/en/about/bayer-products",
+    "final_url": "https://www.patientassistance.bayer.us/en/about/bayer-products",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/en/about/bayer-products"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/en/search",
+    "final_url": "https://www.patientassistance.bayer.us/en/search",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/en/search"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/en/about",
+    "final_url": "https://www.patientassistance.bayer.us/en/about",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/en/about"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/es/",
+    "final_url": "https://www.patientassistance.bayer.us/es/",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/es/"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/es/buscar-ayuda/herramienta-para-buscar-ayuda",
+    "final_url": "https://www.patientassistance.bayer.us/es/buscar-ayuda/herramienta-para-buscar-ayuda",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/es/buscar-ayuda/herramienta-para-buscar-ayuda"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/es/sobre/productos-bayer",
+    "final_url": "https://www.patientassistance.bayer.us/es/sobre/productos-bayer",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/es/sobre/productos-bayer"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/es/recursos",
+    "final_url": "https://www.patientassistance.bayer.us/es/recursos",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/es/recursos"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/es/buscar-ayuda",
+    "final_url": "https://www.patientassistance.bayer.us/es/buscar-ayuda",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/es/buscar-ayuda"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/en/sitemap",
+    "final_url": "https://www.patientassistance.bayer.us/en/sitemap",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/en/sitemap"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/en/user/login",
+    "final_url": "https://www.patientassistance.bayer.us/en/user/login",
+    "status_code": 401,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/en/user/login"
+    ],
+    "classification": "empty",
+    "reason": "empty-html"
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/en/privacy-statement",
+    "final_url": "https://www.patientassistance.bayer.us/en/privacy-statement",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/en/privacy-statement"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/es/preguntas-frecuentes",
+    "final_url": "https://www.patientassistance.bayer.us/es/preguntas-frecuentes",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/es/preguntas-frecuentes"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/es/search",
+    "final_url": "https://www.patientassistance.bayer.us/es/search",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/es/search"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  },
+  {
+    "requested_url": "https://www.patientassistance.bayer.us/es/contacto",
+    "final_url": "https://www.patientassistance.bayer.us/es/contacto",
+    "status_code": 200,
+    "redirects": 0,
+    "chain": [
+      "https://www.patientassistance.bayer.us/es/contacto"
+    ],
+    "classification": "ok",
+    "reason": "",
+    "disclaimer_attempts": 1,
+    "disclaimer_encountered": false,
+    "disclaimer_bypassed": false
+  }
+]

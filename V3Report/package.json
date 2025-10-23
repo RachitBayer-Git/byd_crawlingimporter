@@ -1,0 +1,24 @@
+{
+  "name": "migration-reporting",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Drupal component detection and reporting (Node.js port)",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/runDetection.js",
+    "dev": "ts-node src/runDetection.ts",
+    "report": "node Report.js"
+  },
+  "dependencies": {
+    "yaml": "^2.4.2",
+    "node-html-parser": "^6.1.12",
+    "exceljs": "^4.4.0",
+    "axios": "^1.7.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "ts-node": "^10.9.2",
+    "@types/node": "^20.12.7"
+  }
+}

@@ -17,3 +17,9 @@ Update the testurls.txt
 Update the testurls.txt with url
 `node .\report.js .\testurls.txt`
 
+## Extract V3 Report
+Update the testurls.txt with url
+`npm install`
+Update live urls in urls.txt
+`node Report.js`
+
